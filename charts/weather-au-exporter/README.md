@@ -5,8 +5,8 @@
 ### Installation
 
 ```bash
-$ helm repo add seanson https://seanson.github.io/seanson-charts/
-$ helm install seanson/weather-au-exporter
+$ helm repo add weather-au-exporter https://seanson.github.io/weather-au-exporter
+$ helm install weather-au-exporter/weather-au-exporter
 ```
 
 ![Version: 0.2.3](https://img.shields.io/badge/Version-0.2.3-informational?style=flat-square)
@@ -57,13 +57,9 @@ helm plugin install https://github.com/mbenabda/helm-local-chart-version
 
 ### Releases
 
-Export your `CH_TOKEN` from GitHub.
+Releases are automatically published by GitHub actions on push of a new chart version.
 
-```bash
-make release
-```
-
-Then run the indexing script in the `seanson-charts` repository.
+Note: If the GitHub release succeeds but the publish fails for some reason it will not re-attempt until the GitHub release and tag is deleted.
 
 ### Helm Development
 
