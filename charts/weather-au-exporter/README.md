@@ -9,7 +9,7 @@ $ helm repo add seanson https://seanson.github.io/seanson-charts/
 $ helm install seanson/weather-au-exporter
 ```
 
-![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square)
+![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square)
 
 ## Values
 
@@ -18,7 +18,7 @@ $ helm install seanson/weather-au-exporter
 | affinity | object | `{}` |  |
 | image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"ghcr.io/seanson/weather-au-exporter"` |  |
-| image.tag | string | `"v0.1.0"` |  |
+| image.tag | string | `"latest"` |  |
 | livenessProbe.failureThreshold | int | `10` |  |
 | livenessProbe.httpGet.path | string | `"/metrics"` |  |
 | livenessProbe.httpGet.port | int | `5000` |  |
