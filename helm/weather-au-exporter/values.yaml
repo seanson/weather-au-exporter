@@ -22,7 +22,7 @@ livenessProbe:
   timeoutSeconds: 10
 
 image:
-  repository: seanson/weather-au-exporter
+  repository: ghcr.io/seanson/weather-au-exporter
   tag: v0.1.0
   pullPolicy: Always
 
