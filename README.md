@@ -4,7 +4,7 @@ This is a small exporter that pulls data from the [OpenWeatherMap API](https://o
 
 This is currently used as part of a [Home Automation System](https://github.com/seanson/2018-pyconau-homekit-python) in order to provide outside temperature information compared to internal house temperature.
 
-It is installable as a Helm chart -- see the [README](./helm/weather-au-exporter) for installation instructions.
+It is installable as a Helm chart -- see the [README](./charts/weather-au-exporter) for installation instructions.
 
 
 ## Configuration
