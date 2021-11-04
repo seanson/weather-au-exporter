@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "weather-au-exporter.fullname" . }}
+  labels:
+    app: {{ template "weather-au-exporter.name" . }}
+    chart: {{ template "weather-au-exporter.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "weather-au-exporter.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "weather-au-exporter.name" . }}
+        release: {{ .Release.Name }}
+      annotations:
+{{- with .Values.podAnnotations }}
+{{ toYaml . | indent 8 }}
+{{- end }}
+    spec:
+      serviceAccountName: {{ template "weather-au-exporter.serviceAccountName" . }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: LOCATION_ID
+              value: {{ .Values.weather.locationId }}
+          livenessProbe:
+{{ toYaml .Values.livenessProbe | indent 12 }}
+          readinessProbe:
+{{ toYaml .Values.readinessProbe | indent 12 }}
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}

@@ -12,9 +12,9 @@ from prometheus_flask_exporter import PrometheusMetrics
 
 class Config:
     SCHEDULER_API_ENABLED = True
-    LOCATION_ID = os.environ.get("LOCATION_ID")
+    LOCATION_ID = os.environ.get("LOCATION_ID", "")
 
-if Config.LOCATION_ID is None:
+if Config.LOCATION_ID == "":
     print("LOCATION_ID must be set!")
     sys.exit(1)
 

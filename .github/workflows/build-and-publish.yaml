@@ -24,7 +24,6 @@ env:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -33,7 +32,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
+      
+      - name: Helm Lint and Package
+        uses: WyriHaximus/github-action-helm3@v2
+        with:
+          exec: helm lint ./helm/weather-au-exporter && helm package ./helm/weather-au-exporter
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
       - name: Log into registry ${{ env.REGISTRY }}
@@ -61,3 +64,10 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Publish Helm package
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          files: *.tgz
