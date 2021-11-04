@@ -33,7 +33,7 @@ spec:
               containerPort: 8080
               protocol: TCP
           env:
-            - name: LOCATION_ID
+            - name: LOCATION
               value: {{ .Values.weather.locationId }}
           envFrom:
             - secretRef:
