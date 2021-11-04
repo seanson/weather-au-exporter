@@ -9,7 +9,7 @@ $ helm repo add seanson https://seanson.github.io/seanson-charts/
 $ helm install seanson/weather-au-exporter
 ```
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square)
 
 ## Values
 
@@ -17,7 +17,7 @@ $ helm install seanson/weather-au-exporter
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | image.pullPolicy | string | `"Always"` |  |
-| image.repository | string | `"seanson/weather-au-exporter"` |  |
+| image.repository | string | `"ghcr.io/seanson/weather-au-exporter"` |  |
 | image.tag | string | `"v0.1.0"` |  |
 | livenessProbe.failureThreshold | int | `10` |  |
 | livenessProbe.httpGet.path | string | `"/metrics"` |  |
@@ -28,7 +28,6 @@ $ helm install seanson/weather-au-exporter
 | podAnnotations | object | `{}` |  |
 | readinessProbe.httpGet.path | string | `"/metrics"` |  |
 | readinessProbe.httpGet.port | int | `5000` |  |
-| replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | service.enabled | bool | `true` |  |
 | service.port | int | `80` |  |
@@ -42,6 +41,7 @@ $ helm install seanson/weather-au-exporter
 | serviceMonitor.path | string | `"/metrics"` |  |
 | serviceMonitor.scrapeTimeout | string | `"10s"` |  |
 | tolerations | list | `[]` |  |
+| weather.locationId | string | `""` |  |
 
 ## Development
 

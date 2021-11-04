@@ -1,5 +1,4 @@
 apiVersion: v1
-appVersion: 0.1.0
 description: Australian BOM weather promtheus metrics exporter
 engine: gotpl
 home: https://github.com/seanson/weather-au-exporter
@@ -9,4 +8,4 @@ maintainers:
 name: weather-au-exporter
 sources:
 - https://github.com/seanson/weather-au-exporter
-version: 0.1.0
+version: 0.1.1
