@@ -34,7 +34,7 @@ spec:
               protocol: TCP
           env:
             - name: LOCATION
-              value: {{ .Values.weather.locationId }}
+              value: {{ .Values.weather.location }}
           envFrom:
             - secretRef:
                 name: {{ template "weather-au-exporter.fullname" . }}

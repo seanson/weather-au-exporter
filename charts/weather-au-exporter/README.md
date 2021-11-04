@@ -9,7 +9,7 @@ $ helm repo add seanson https://seanson.github.io/seanson-charts/
 $ helm install seanson/weather-au-exporter
 ```
 
-![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square)
+![Version: 0.2.3](https://img.shields.io/badge/Version-0.2.3-informational?style=flat-square)
 
 ## Values
 
