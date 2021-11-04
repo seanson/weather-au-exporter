@@ -2,6 +2,20 @@ apiVersion: v1
 entries:
   weather-au-exporter:
   - apiVersion: v1
+    created: "2021-11-04T13:36:52.374712804Z"
+    description: Australian BOM weather promtheus metrics exporter
+    digest: 9d82aae122546fec0036af4024aa238f982ff5357157a20b1304b7c264cfb182
+    home: https://github.com/seanson/weather-au-exporter
+    maintainers:
+    - email: seandavidjohnson@gmail.com
+      name: seanson
+    name: weather-au-exporter
+    sources:
+    - https://github.com/seanson/weather-au-exporter
+    urls:
+    - https://github.com/seanson/weather-au-exporter/releases/download/weather-au-exporter-0.2.2/weather-au-exporter-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v1
     created: "2021-11-04T13:27:02.916016614Z"
     description: Australian BOM weather promtheus metrics exporter
     digest: d1deda1d2eeed1233e6320de918f9c8673912b3d8683fce45ff3cb714c4fbfbf
