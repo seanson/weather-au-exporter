@@ -1,6 +1,4 @@
 WORKING_DIR := $(shell pwd)
-CHART_VERSION := $(shell helm local-chart-version get --chart .)
-
 .DEFAULT_GOAL := help
 
 .PHONY: build push
@@ -10,7 +8,7 @@ docs:: ## Builds the README.md for charts
 
 bump-%:: ## Bump the version of charts and pyproject.toml
 		poetry version $*
-		for chart in $(shell ls -1 charts); do helm local-chart-version bump --chart charts/$${chart} --version-segment $*; done
+		for chart in "$(shell ls -1 charts)"; do helm local-chart-version bump --chart charts/$${chart} --version-segment $*; done
 		make docs
 
 # a help target including self-documenting targets (see the awk statement)
