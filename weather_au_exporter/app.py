@@ -5,20 +5,26 @@ import logging
 
 from flask import Flask
 from flask_apscheduler import APScheduler
-from datetime import datetime, timezone
-from dateutil.parser import isoparse
 from prometheus_client import Gauge
 from prometheus_flask_exporter import PrometheusMetrics
+from pyowm import OWM
 
 class Config:
     SCHEDULER_API_ENABLED = True
-    LOCATION_ID = os.environ.get("LOCATION_ID", "")
+    LOCATION = os.environ.get("LOCATION", "")
+    OWM_API_KEY = os.environ.get("OWM_API_KEY", "")
 
-if Config.LOCATION_ID == "":
-    print("LOCATION_ID must be set!")
+if Config.LOCATION == "":
+    print("LOCATION must be set!")
     sys.exit(1)
 
-weather_data = None
+if Config.OWM_API_KEY == "":
+    print("OWM_API_KEY must be set!")
+    sys.exit(1)
+
+owm = OWM(Config.OWM_API_KEY)
+weather_manager = owm.weather_manager()
+
 logger = logging.getLogger(__name__)
 app = Flask(__name__)
 app.config.from_object(Config())
@@ -32,22 +38,10 @@ scheduler.start()
 
 @scheduler.task('interval', id='fetch_weather', minutes=30, misfire_grace_time=900)
 def fetch_weather():
-    global weather_data
-    logger.info("Fetching weather data for location %s", Config.LOCATION_ID)
-    url = f"https://api.weather.bom.gov.au/v1/locations/{Config.LOCATION_ID}/forecasts/hourly"
-    response = requests.get("https://api.weather.bom.gov.au/v1/locations/r1r143/forecasts/hourly")
-    weather_data = response.json()["data"]
-
-@scheduler.task('interval', id='update_metrics', minutes=5, misfire_grace_time=900)
-def weather_metrics():
-    if weather_data is None:
-        logger.warning("Weather data not ready yet")
-        return
-    logger.info("Updating weather metics")
-    now = datetime.now(timezone.utc)
-    closest = min(weather_data, key=lambda d: abs(isoparse(d["time"]) - now))
-    temp_gauge.labels(location=Config.LOCATION_ID).set(closest["temp"])
-    
+    logger.info("Fetching weather data for location %s", Config.LOCATION)
+    weather_manager
+    observation = weather_manager.weather_at_place(Config.LOCATION)
+    temperature = observation.weather.temperature('celsius')['temp']
+    temp_gauge.labels(location=Config.LOCATION).set(temperature)
 
 fetch_weather()
-weather_metrics()

@@ -1,6 +1,11 @@
 ---
 weather:
-  locationId: "" # Must be set
+  # -- Location to query weather for. Must be set, should be a "City,Province/State", ie: "Sydney,NSW"
+  location: ""
+  # -- OpenWeatherMap API key, not advised
+  apiKey: ""
+  # -- Optional sealed secret for API key, can be set if you run the SealedSecrets controller 
+  sealedApiKey: "" 
 
 podAnnotations:
   {}

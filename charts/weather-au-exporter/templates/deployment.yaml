@@ -35,6 +35,9 @@ spec:
           env:
             - name: LOCATION_ID
               value: {{ .Values.weather.locationId }}
+          envFrom:
+            - secretRef:
+                name: {{ template "weather-au-exporter.fullname" . }}
           livenessProbe:
 {{ toYaml .Values.livenessProbe | indent 12 }}
           readinessProbe:
