@@ -8,4 +8,4 @@ maintainers:
 name: weather-au-exporter
 sources:
 - https://github.com/seanson/weather-au-exporter
-version: 0.1.2
+version: 0.1.3
