@@ -24,7 +24,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "flake8>=4.0.1,<5",
+    "flake8>=4.0.1,<8",
 ]
 
 # [build-system]
