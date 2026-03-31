@@ -1,7 +1,6 @@
-import os
-import requests
-import sys
 import logging
+import os
+import sys
 
 from flask import Flask
 from flask_apscheduler import APScheduler
@@ -52,7 +51,6 @@ scheduler.start()
 @scheduler.task("interval", id="fetch_weather", minutes=30, misfire_grace_time=900)
 def fetch_weather():
     logger.info("Fetching weather data for location %s", Config.LOCATION)
-    weather_manager
     observation = weather_manager.weather_at_place(Config.LOCATION)
     temperature = observation.weather.temperature("celsius")["temp"]
     humidity = observation.weather.humidity
