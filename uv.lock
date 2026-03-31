@@ -867,7 +867,7 @@ wheels = [
 
 [[package]]
 name = "prometheus-flask-exporter"
-version = "0.18.7"
+version = "0.23.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "flask", version = "2.2.5", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.8'" },
@@ -876,9 +876,9 @@ dependencies = [
     { name = "prometheus-client", version = "0.21.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.8.*'" },
     { name = "prometheus-client", version = "0.24.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.9'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/15/e9/5fecdff513cb250770c77be73de9c79960158472c78a747fcbd06e80e5ce/prometheus_flask_exporter-0.18.7.tar.gz", hash = "sha256:f1f6f23535479d41587a100a24a60cb9199c34986e95f6691496807ee5017e59", size = 21649, upload-time = "2021-12-26T21:21:59.393Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/8f/40/736bd2cb19b065cea395deb57b5b520a2df105dab92af3fb200ee560ad92/prometheus_flask_exporter-0.23.2.tar.gz", hash = "sha256:41fc9bbd7d48cc958ed8384aacf60c3621d9e903768be61c4e7f0c63872eaf1a", size = 31801, upload-time = "2025-03-11T23:05:30.409Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/fc/a0/ba5ca01ce53b1c8f51d927be6b2264bdec95592ffba80b52c8dc5c0491fb/prometheus_flask_exporter-0.18.7-py3-none-any.whl", hash = "sha256:38bc68db295d0f895ad0fb319b1bfd200ae273b33397ce497c9b96dceb708ce9", size = 17927, upload-time = "2021-12-26T21:21:58.064Z" },
+    { url = "https://files.pythonhosted.org/packages/96/04/486040e241708a723ee7673d98733c35f2cf081f63ced0091124b8572177/prometheus_flask_exporter-0.23.2-py3-none-any.whl", hash = "sha256:94922a636d4c1d8b68e1ee605c30a23e9bbb0b21756df8222aa919634871784c", size = 19002, upload-time = "2025-03-11T23:05:29.176Z" },
 ]
 
 [[package]]
@@ -1292,7 +1292,7 @@ requires-dist = [
     { name = "flask", specifier = ">=2.0.2,<3" },
     { name = "flask-apscheduler", specifier = ">=1.12.2,<2" },
     { name = "gunicorn", specifier = ">=20.1.0,<24" },
-    { name = "prometheus-flask-exporter", specifier = ">=0.18.5,<0.19" },
+    { name = "prometheus-flask-exporter", specifier = ">=0.18.5,<0.24" },
     { name = "pyowm", specifier = ">=3.2.0,<4" },
     { name = "python-dateutil", specifier = ">=2.8.2,<3" },
     { name = "requests", specifier = ">=2.26.0,<3" },
