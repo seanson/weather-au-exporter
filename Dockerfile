@@ -1,4 +1,4 @@
-FROM python:3.9-alpine as base
+FROM python:3.12-alpine AS base
 
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONHASHSEED=random \
@@ -6,27 +6,20 @@ ENV PYTHONFAULTHANDLER=1 \
 
 WORKDIR /app
 
-FROM base as builder
+FROM base AS builder
 
-ENV PIP_DEFAULT_TIMEOUT=100 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1 \
-    PIP_NO_CACHE_DIR=1 \
-    POETRY_VERSION=1.0.5
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-RUN apk add --no-cache gcc libffi-dev musl-dev
-RUN pip install "poetry==$POETRY_VERSION"
-RUN python -m venv /venv
-
-COPY pyproject.toml poetry.lock ./
-RUN poetry export -f requirements.txt | /venv/bin/pip install -r /dev/stdin
+COPY pyproject.toml uv.lock ./
+RUN uv sync --frozen --no-dev --no-install-project
 
 COPY . .
-RUN poetry build && /venv/bin/pip install dist/*.whl
+RUN uv sync --frozen --no-dev
 
-FROM base as final
+FROM base AS final
 
-RUN apk add --no-cache libffi tzdata
-COPY --from=builder /venv /venv
+RUN apk add --no-cache tzdata
+COPY --from=builder /app/.venv /venv
 COPY docker-entrypoint.sh weather_au_exporter ./
 
 ENV TZ=Australia/Sydney

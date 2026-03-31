@@ -7,7 +7,7 @@ docs:: ## Builds the README.md for charts
 		helm-docs
 
 bump-%:: ## Bump the version of charts and pyproject.toml
-		poetry version $*
+		uvx --from=toml-cli toml set --toml-path pyproject.toml project.version $*
 		for chart in "$(shell ls -1 charts)"; do helm local-chart-version bump --chart charts/$${chart} --version-segment $*; done
 		make docs
 

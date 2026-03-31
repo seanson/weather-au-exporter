@@ -3,24 +3,19 @@ name = "weather-au-exporter"
 version = "0.2.4"
 description = ""
 authors = []
-requires-python = ">=3.7,<4"
+requires-python = ">=3.12,<4"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
-    "flask>=2.0.2,<3",
+    "flask>=3.0,<4",
     "beautifulsoup4>=4.10.0,<5",
     "requests>=2.26.0,<3",
     "python-dateutil>=2.8.2,<3",
-    "Flask-APScheduler>=1.12.2,<2",
+    "Flask-APScheduler>=1.13.1,<2",
     "prometheus-flask-exporter>=0.18.5,<0.24",
     "tzlocal<3.0",
     "gunicorn>=20.1.0,<24",
