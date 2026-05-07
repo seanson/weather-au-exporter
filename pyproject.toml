@@ -18,14 +18,14 @@ dependencies = [
     "Flask-APScheduler>=1.13.1,<2",
     "prometheus-flask-exporter>=0.18.5,<0.24",
     "tzlocal<6.0",
-    "gunicorn>=20.1.0,<26",
+    "gunicorn>=26.0.0,<27",
     "pyowm>=3.2.0,<4",
 ]
 
 [dependency-groups]
 dev = [
-    "pre-commit>=4.5.1",
-    "ruff>=0.11",
+    "pre-commit>=4.6.0",
+    "ruff>=0.15.12",
 ]
 
 [tool.ruff]
